@@ -12,18 +12,18 @@ const int MAX_HITS_TAKEN = 3;
 class RPG
 {
     public:
-        // constructors
+        // Constructors
         RPG();
         RPG(string name, int hits_taken, float luck, float exp, int level);
 
-         // destructor
+         // Destructor
         ~RPG();
 
-        // mutators
+        // Checks if RPG is alive
         bool isAlive() const;
         void setHitsTaken(int new_hits);
 
-        // accessors
+        // Accessors
         string getName() const;
         int getHitsTaken() const;
         float getLuck() const;

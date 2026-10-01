@@ -31,7 +31,7 @@ void RPG::setHitsTaken(int new_hits)
     hits_taken = new_hits;
 }
 
-// Returns true if player has fewewr than 3 hits
+// Returns true if player has fewer than 3 hits
 bool RPG::isAlive() const
 {
     return hits_taken < MAX_HITS_TAKEN;
