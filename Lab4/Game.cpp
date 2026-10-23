@@ -138,3 +138,8 @@ void Game::printFinalResults()
         players[i]->printStats();
     }
 }
+
+// Destructor
+Game::~Game()
+{
+}
