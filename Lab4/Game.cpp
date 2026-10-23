@@ -2,6 +2,7 @@
 #include <random>
 #include <iterator>
 #include <string>
+#include <cstdio>
 
 using namespace std;
 
@@ -50,4 +51,26 @@ int Game::selectPlayer()
     int selectedIndex = *it;
 
     return selectedIndex;
+}
+
+// Brief ends curent battle round, resets hits,
+// removes loser, upadtes winner's experience, prints result.
+// Param winner pointer to winning RPG, loser pointer to losing RPG
+// loserIndex Index of losing player
+
+void Game::endRound(RPG *winner, RPG *loser, int loserIndex)
+{
+    // Resets winner's hits to 0
+    (*winner).setHitsTaken(0);
+    
+    // Removes losing player
+    live_players.erase(loserIndex);
+
+    // Updates winner's experience and level
+    (*winenr).updateExpLevel();
+
+    // Prints results
+    printf("%s won against %s\n"),
+        (*winner).getName().c_str(),
+        (*loser).getName().c_str();
 }
