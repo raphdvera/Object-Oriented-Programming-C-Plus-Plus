@@ -74,3 +74,46 @@ void Game::endRound(RPG *winner, RPG *loser, int loserIndex)
         (*winner).getName().c_str(),
         (*loser).getName().c_str();
 }
+
+// Selects two random living players and makes them
+// battle until one loses.
+
+void Game::battleRound()
+{
+    // Selects two living players
+    int playerIndex1 = selectPlayer();
+    int playerIndex2 = selectPlayer();
+
+    // If same player selected twice, restarts round and chooses again
+    if (playerIndex1 == playerIndex2)
+    {
+        battleRound();
+        return;
+    }
+
+    // Pointers to two selected RPG players
+    RPG *player1 = players[playerIndex1];
+    RPG *player2 = players[playerIndex2];
+
+    // Fights while both players are alive
+    while (player1->isAlive() && player2->isAlive())
+    {
+        // Player 1 attacks player 2
+        player1->attack(player2);
+
+        // Vice-versa
+        player2->attack(player1);
+    }
+
+    // Finds which player won
+    if (player1->isAlive())
+    {
+        // Player 1 wins
+        endRound(player1, player2, playerIndex2);
+    }
+    else
+    {
+        // Player 2 wins
+        endRound(player2, player1, playerIndex1);
+    }
+}
