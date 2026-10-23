@@ -117,3 +117,24 @@ void Game::battleRound()
         endRound(player2, player1, playerIndex1);
     }
 }
+
+// Running battle rounds until one player is left alive.
+void Game::gameLoop()
+{
+    // Continues the game if more than one player is alive
+    while (live_players.size() > 1)
+    {
+        battleRound();
+    }
+}
+
+// Prints final stats
+void Game::printFinalResults()
+{
+    // Goes through player stored in players vector
+    for (int i = 0; i < players.size(); i++)
+    {
+        // Call printStats() for each RPG player
+        players[i]->printStats();
+    }
+}
