@@ -1,0 +1,53 @@
+#include "Game.h"
+#include <random>
+#include <iterator>
+#include <string>
+
+using namespace std;
+
+// Constructor
+Game::Game()
+{
+}
+
+// Creation for RPG pointer and updates names
+// with ordering. Additionally, live_players populated
+// from 0 to n - 1 as players are alive initially
+
+void Game::generatePlayers(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        // RPG player with pointer
+        players.push_back(new RPG());
+
+        // Rename players as NPC_0 to NPC_#
+        string new_name = "NPC_" + to_string(i);
+        players[i]->setName(new_name);
+
+        // Player index of living players
+        live_players.insert(i);
+    }
+}
+
+// Randomly selects player from alive players, live_players
+// return int index for vector, players
+
+int Game::selectPlayer()
+{
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> dist(0, live_players.size() - 1);
+
+    // Picks random position
+    int randomIndex = dist(gen);
+
+    // Advances iterator to said position
+    set<int>::iterator it = live_players.begin();
+    advance(it, randomIndex);
+
+    // Player index stored
+    int selectedIndex = *it;
+
+    return selectedIndex;
+}
