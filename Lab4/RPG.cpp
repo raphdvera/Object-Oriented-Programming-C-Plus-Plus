@@ -106,3 +106,14 @@ void RPG::attack(RPG *opponent)
         (*opponent).setHitsTaken((*opponent).getHitsTaken() + 1);
     }
 }
+
+void RPG::printStats()
+{
+    printf("Name: %s\t Hits Taken: %d\t Luck: %f\t Exp: %f\t Level: %d\t Status: %s\n",
+        name.c_str(),
+        hits_taken,
+        luck,
+        exp,
+        level,
+        isAlive() ? "Alive" : "Dead");
+}
