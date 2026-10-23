@@ -63,3 +63,20 @@ int RPG::getLevel() const
     return level;
 }
 
+// Part Two of the Lab
+void RPG::setName(string name)
+{
+    this->name = name;
+}
+
+void RPG::updateExpLevel()
+{
+    exp += 50;
+
+    if (exp >=100)
+    {
+        level = level + 1;
+        exp = 0;
+        luck += 0.1;
+    }
+}
