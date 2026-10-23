@@ -1,4 +1,6 @@
 #include "RPG.h"
+#include <cstdlib>
+#include <random>
 
 // Default constructor
 RPG::RPG()
@@ -78,5 +80,29 @@ void RPG::updateExpLevel()
         level = level + 1;
         exp = 0;
         luck += 0.1;
+    }
+}
+
+void RPG::attack(RPG *opponent)
+{
+    random_device rd;
+    mt19937 gen(rd()); // seed with random
+    uniform_real_distribution<double> dis(0.0, 1.0);
+
+    float random_num = dis(gen);
+
+    // Create a bool called hit
+    // hit is true if random_num > HIT_factor * opponent's luck
+    bool hit = false;
+
+    if (random_num > HIT_FACTOR * (opponent).getLuck())
+    {
+        hit = true;
+    }
+
+    // If hit is true, the opponent's hits_taken will increase by 1
+    if (hit)
+    {
+        (*opponent).setHitsTaken((*opponent).getHitsTaken() + 1);
     }
 }
