@@ -95,7 +95,7 @@ void RPG::attack(RPG *opponent)
     // hit is true if random_num > HIT_factor * opponent's luck
     bool hit = false;
 
-    if (random_num > HIT_FACTOR * (opponent).getLuck())
+    if (random_num > HIT_FACTOR * (*opponent).getLuck())
     {
         hit = true;
     }

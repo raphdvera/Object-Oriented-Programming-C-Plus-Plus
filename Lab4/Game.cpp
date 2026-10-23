@@ -67,12 +67,12 @@ void Game::endRound(RPG *winner, RPG *loser, int loserIndex)
     live_players.erase(loserIndex);
 
     // Updates winner's experience and level
-    (*winenr).updateExpLevel();
+    (*winner).updateExpLevel();
 
     // Prints results
-    printf("%s won against %s\n"),
+    printf("%s won against %s\n",
         (*winner).getName().c_str(),
-        (*loser).getName().c_str();
+        (*loser).getName().c_str());
 }
 
 // Selects two random living players and makes them

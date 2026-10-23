@@ -18,6 +18,7 @@ class Game
         void battleRound(); // runs battle
         void gameLoop(); // battle remains running until one player left
         void printFinalResults(); // final stats
+        int selectPlayer(); // selects player
 
         // Destructor
         ~Game();
@@ -29,5 +30,4 @@ class Game
         // Index of players alive
         set<int> live_players;
 };
-
 #endif
