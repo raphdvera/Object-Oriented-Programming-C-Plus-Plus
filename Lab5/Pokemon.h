@@ -25,5 +25,4 @@ protected:
     int defense;
     vector<string> type;
 };
-
 #endif
