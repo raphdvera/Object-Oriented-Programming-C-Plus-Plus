@@ -18,3 +18,18 @@ Pokemon(name, hp, att, def, t){
     skills = s;
     cout << "Overloaded Constructor (Charmander)\n";
 }
+
+// Says what a charmander says
+void Charmander::speak(){
+    cout << "Charmander-char\n";
+}
+
+// Calls printStats and appends the skill
+void Charmander::printStats(){
+    Pokemon::printStats();
+    cout << "Skills: ";
+    for(int i = 0; i < skills.size(); i++){
+        cout << skills[i] << "\t";
+    }
+    cout << endl;
+}
